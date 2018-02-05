@@ -1,26 +1,31 @@
 # BD_Project - Taxi Price Prediction - by Luis and Jelena
-We use the NYC taxi dataset and streaming data pipeline (consisting of Kafka and Spark) to eventually construct a regression model capable of forecasting the price of a future taxi ride.
+The analytic goal of our big data project was to forecast the price of a future taxi ride using the NYC taxi data set. Therefore, we  set up a streaming data pipeline (consisting of Kafka and Spark) to eventually model the processed data in pyspark with the python libraries under "prerequisites". The focus of the project lies rather on the simulation of a data stream and the implementation of the tools to receive this data, than constructing a very accurate model. So the analytics part leaves room for further improvement.
 
-Our architecture (grey elements not implemented yet)
+Our currently implemented architecture is documented in the uploaded JPEG with the grey elements not being fully implemented yet.
 
+## Prerequisites
+- Cloudera Quickstart VM 5.12
+- We used the following services: 
+  - Spark 1.6, Yarn and Zookeeper; already active on the VM 
+  - CDH 5.12 and Kafka 3.0 had to be downloaded and activated as parcels
+- Download and install Python2.7 and the Jupyter Notebook (or Anaconda, where jupyter and the needed libraries are included)
+- If not working with anaconda make sure you have the following libraries installed: pandas, sklearn, numpya and kafka
 
+- Set the following paths so you can use jupyter to work with pyspark:
 
-
-##Prerequisites
-Cloudera Quickstart VM 5.12
-CDH 5.12, Kafka, Spark installed and aditionally Yarn and Zookeeper as active Services
-Python2.7 and the Jupyter Notebook (or Anaconda )
-Libraries and packages: pandas, sklearn, numpy, kafka and csv databricks (package for pyspark for the preliminary architecture)
-
-Set the following paths so you can use jupyter to work with pyspark:
+```
 export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 export PATH=/home/cloudera/anaconda2/bin:$PATH
 export PYSPARK_PYTHON=/home/cloudera/anaconda2/bin/python
+```
+You might want to set them directly in the cloudera manager under the Spark configuration in the field /spark-env.sh.
 
-##Data Slicing and Kafka Producer
+## Data Slicing and Kafka Producer
 
-##Spark Consumer
+## Spark Consumer
 
-##Spark DataFrames and Model construction
+## Spark DataFrames and Model construction
+ 
+ - csv databricks (package for pyspark for the preliminary architecture)
 

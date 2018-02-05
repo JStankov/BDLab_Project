@@ -19,13 +19,19 @@ export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 export PATH=/home/cloudera/anaconda2/bin:$PATH
 export PYSPARK_PYTHON=/home/cloudera/anaconda2/bin/python
 ```
-You might want to set them directly in the cloudera manager under the Spark configuration in the field /spark-env.sh.
+You might want to set them directly in the cloudera manager under the Spark configuration in the field Configuration Snippet /spark-env.sh.
 
 ## Data Slicing and Kafka Producer
 
 ## Spark Consumer
+We implemented the Spark consumer in various ways, so the messages could be displayed on the screen. Nevertheless, we did not manage to directly store the received data in Spark DataFrames, which our further code is based on. It turned out that there is a handy function coming with Spark Version 2.2+, so upgrading Spark or finding a workaround are options for improving the pipeline. 
 
-## Spark DataFrames and Model construction
- 
- - csv databricks (package for pyspark for the preliminary architecture)
+## Spark DataFrames and Model creation
+ For the time being we have to take the data from HDFS and pretend it came from a Spark Consumer.
+ Place a file into the HDFS, read it out and continue with processing in Spark DataFrames.
+ If you want to work with CSVs start pyspark with the following parameter: 
+ '''
+ $ pyspark --packages com.databricks:spark-csv_2.11:1.4.0
+ ''' 
+This will install the csv databricks package which helps reading in csv Data without formally inferring the underlying schema by hand.
 

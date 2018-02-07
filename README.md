@@ -22,11 +22,13 @@ export PYSPARK_PYTHON=/home/cloudera/anaconda2/bin/python
 
 You might want to set them directly in the Cloudera Manager under the Spark configuration in the field Configuration Snippet /spark-env.sh.
 
-## Data used
-The base of data consisted of the 
+## Data source
+The base of data consisted of the NYC Taxi & Limousine Comission public trip record data, which has been published every month since 2009 and generating data of 350 GB. Each months data set contains the individual trip history including every ride taken from the city boundaries of New York City. The trip data contains detailed content, such as the pick-up and drop-off area and time, the fare, fees, tax, tip, etc. paid and several other specifications.
 
 ## Data Slicing and Kafka Producer
-In order to simulate a real-time data stream, we pre
+Since we decided to use an existing data set, we wrote several Python scripts to simulate a real-time data stream, consisting of a two-step approach. Firstly, the monthly data sets are split into subsets of five minute data content. In a second step these new subsets are read by batches, which are executed every five mintes since the beginning of the last batch, to simulate an approximation to a real-time data stream. Once the data is picked up by the batch it is streamed line by line by the Kafka Producer.
+
+Both scripts mainly use the pandas dataframe to complete operations on the data obtained from the .csv-files.
 
 ## Spark Consumer
 We implemented the Spark consumer in various ways, so the messages could be displayed on the screen. Nevertheless, we did not manage to directly store the received data in Spark DataFrames, which our further code is based on. It turned out that there is a handy function coming with Spark Version 2.2+, so upgrading Spark or finding a workaround are options for improving the pipeline. 

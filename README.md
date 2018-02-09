@@ -2,6 +2,8 @@
 The analytic goal of our big data project was to forecast the price of a future taxi ride using the NYC taxi data set. Therefore, we  set up a streaming data pipeline (consisting of Kafka and Spark) to eventually model the processed data in pyspark with the python libraries mentioned under "prerequisites". The focus of the project lies rather on the simulation of a data stream and the implementation of the tools to receive this data, than constructing a very accurate statistical estimation model. So the current standing of the analytics part leaves room for further improvement.
 
 Our currently implemented architecture is documented in the uploaded JPEG with the grey elements not being fully implemented yet.
+Run the code BigDataProject_TaxiFarePricing.ipynb for the project results but make sure you have read the instructions below.
+
 
 ## Prerequisites
 - Cloudera Quickstart VM 5.12

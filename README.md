@@ -9,7 +9,7 @@ Our currently implemented architecture is documented in the uploaded JPEG with t
   - Spark 1.6, Yarn and Zookeeper; already active on the VM 
   - CDH 5.12 and Kafka 3.0 had to be downloaded and activated as parcels
 - Download and install Python2.7 and the Jupyter Notebook (or Anaconda, where jupyter and the needed libraries are included)
-- If not working with anaconda make sure you have the following Python libraries installed: pandas, sklearn, numpya and kafka
+- If not working with anaconda make sure you have the following Python libraries installed: pandas, sklearn, numpy and kafka
 
 - Set the following paths so you can use jupyter to work with pyspark:
 
@@ -37,7 +37,8 @@ We implemented the Spark consumer in various ways, so the messages could be disp
  For the time being we have to take the data from HDFS and pretend it came from a Spark Consumer.
  Place a file into the HDFS, read it out and continue with processing in Spark DataFrames.
  If you want to work with CSVs start pyspark with the following parameter: 
- '''
+ ```
  $ pyspark --packages com.databricks:spark-csv_2.11:1.4.0
- ''' 
-This will install the csv databricks package which helps reading in csv Data without formally inferring the underlying schema by hand.
+ ``` 
+This will install the csv databricks package which helps reading in csv Data without formally inferring the underlying schema by hand. We recommend to use one of the datasets from last year or 2016, as the old datasets have a different structure for locations (longitudes and latitudes) which our new model does not consider.
+We also started mapping and clustering the data for the older data sets but refrained from that approach, as we switched our focus to the architecture.
